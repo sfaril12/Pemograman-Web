@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Supermarket</title>
+</head>
+<body>
+
+    <h2>Program Belanja Supermarket</h2>
+
+    <h3>Daftar Barang</h3>
+
+    <ul>
+        <li>Beras - Rp75.000</li>
+        <li>Minyak Goreng - Rp20.000</li>
+        <li>Gula - Rp18.000</li>
+        <li>Telur - Rp30.000</li>
+        <li>Mi Instan - Rp3.500</li>
+    </ul>
+
+    <h3>Input Pembelian</h3>
+
+    <label>Nama:</label>
+    <input type="text" id="nama">
+    <br><br>
+
+    <label>Barang yang dipilih:</label>
+
+    <select id="barang">
+        <option value="75000">Beras</option>
+        <option value="20000">Minyak Goreng</option>
+        <option value="18000">Gula</option>
+        <option value="30000">Telur</option>
+        <option value="3500">Mi Instan</option>
+    </select>
+
+    <br><br>
+
+    <label>Jumlah:</label>
+    <input type="number" id="jumlah" min="1">
+    <br><br>
+
+    <label>
+        <input type="checkbox" id="member">
+        Member
+    </label>
+
+    <br><br>
+
+    <button onclick="hitungBelanja()">Hitung</button>
+
+    <h3>Hasil Pembelian</h3>
+
+    <p>Nama: <span id="hasilNama"></span></p>
+    <p>Barang: <span id="hasilBarang"></span></p>
+    <p>Jumlah: <span id="hasilJumlah"></span></p>
+    <p>Status: <span id="hasilStatus"></span></p>
+    <p>Total Harga: Rp<span id="hasilHarga"></span></p>
+
+
+    <script>
+
+        function hitungBelanja() {
+
+            // Mengambil input
+            let nama = document.getElementById("nama").value;
+            let barang = document.getElementById("barang");
+            let harga = Number(barang.value);
+            let namaBarang = barang.options[barang.selectedIndex].text;
+            let jumlah = Number(document.getElementById("jumlah").value);
+            let member = document.getElementById("member").checked;
+
+            // Menghitung total harga
+            let total = harga * jumlah;
+
+            // Diskon member 10%
+            if (member) {
+                total = total - (total * 10 / 100);
+            }
+
+            // Menentukan status
+            let status;
+
+            if (member) {
+                status = "Member (Diskon 10%)";
+            } else {
+                status = "Bukan Member";
+            }
+
+            // Menampilkan hasil
+            document.getElementById("hasilNama").innerHTML = nama;
+            document.getElementById("hasilBarang").innerHTML = namaBarang;
+            document.getElementById("hasilJumlah").innerHTML = jumlah;
+            document.getElementById("hasilStatus").innerHTML = status;
+            document.getElementById("hasilHarga").innerHTML = total.toLocaleString("id-ID");
+        }
+
+    </script>
+
+</body>
+</html>
