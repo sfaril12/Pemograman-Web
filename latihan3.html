@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Data Pembelian Supermarket</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            width: 500px;
+            margin: 50px auto;
+            background-color: white;
+            padding: 25px;
+            border: 1px solid #ccc;
+        }
+
+        h1 {
+            margin-top: 0;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 15px;
+        }
+
+        p {
+            margin: 15px 0;
+        }
+
+        button {
+            background-color: #9ee7c1;
+            border: 1px solid #777;
+            padding: 8px 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Data Pembelian Supermarket</h1>
+
+        <p>Nama: <span id="nama">-</span></p>
+
+        <p>Barang: <span id="barang">-</span></p>
+
+        <p>Jumlah: <span id="jumlah">-</span></p>
+
+        <p>Member: <span id="member">-</span></p>
+
+        <p>Total Harga: Rp<span id="total">-</span></p>
+
+        <button onclick="tampilkanData()">Tampilkan Pembelian</button>
+
+    </div>
+
+
+    <script>
+
+        function tampilkanData() {
+
+            // Variabel String
+            let nama = "Andi";
+            let barang = "Beras";
+
+            // Variabel Number
+            let harga = 75000;
+            let jumlah = 2;
+
+            // Variabel Boolean
+            let isMember = true;
+
+            // Menghitung total harga
+            let totalHarga = harga * jumlah;
+
+            // Jika member mendapatkan diskon 10%
+            if (isMember) {
+                totalHarga = totalHarga - (totalHarga * 0.10);
+            }
+
+            // Menampilkan data ke halaman
+            document.getElementById("nama").innerHTML = nama;
+            document.getElementById("barang").innerHTML = barang;
+            document.getElementById("jumlah").innerHTML = jumlah;
+
+            if (isMember) {
+                document.getElementById("member").innerHTML = "true";
+            } else {
+                document.getElementById("member").innerHTML = "false";
+            }
+
+            document.getElementById("total").innerHTML =
+                totalHarga.toLocaleString("id-ID");
+        }
+
+    </script>
+
+</body>
+</html>
